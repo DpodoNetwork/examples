@@ -29,8 +29,8 @@ class TestModel {
 		);
 		// yield $httpRequest->post($path, $data, $header);
 		yield $httpRequest->get($url); 
-	  }
-	  
+	}
+
 	public function muticallTest() {
 		$ip = '127.0.0.1';
 		$data = 'test';
@@ -48,14 +48,14 @@ class TestModel {
 		$calls ->request($secondReq,'second');
 
 		yield $calls;
-	  }
+	}
 
 	public function HttpmuticallTest() {
-	  
+
 		$calls=new Swoole\Client\Multi();
 		$test = new Swoole\Client\HTTP("http://www.dpodo.com/");
 		$calls ->request($test,"dpodo network");
-	  
+
 		yield $calls;
 	}
 
@@ -66,13 +66,13 @@ class TestModel {
 		// second
 		$timeout = 0.5;
 		yield new Swoole\Client\TCP($ip, $port, $data, $timeout);
-	 }
+	}
 
-	 public function mysqlTest() {
-	 	$sql = new Swoole\Client\MYSQL(array('host' => '127.0.0.1', 'port' => 3345, 'user' => 'root', 'password' => 'root', 'database' => 'test', 'charset' => 'utf-8',));
+	public function mysqlTest() {
+		$sql = new Swoole\Client\MYSQL(array('host' => '127.0.0.1', 'port' => 3345, 'user' => 'root', 'password' => 'root', 'database' => 'test', 'charset' => 'utf-8',));
 		$ret = (yield $sql ->query('show tables'));
 		var_dump($ret);
 		$ret = (yield $sql ->query('desc test'));
 		var_dump($ret);
-	 }
+	}
 }

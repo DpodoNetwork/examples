@@ -30,7 +30,7 @@ class TestController extends Controller{
 			yield array(
 				'r' => 1,
 				'error_msg' => 'yield failed',
-				 );
+				);
 		}
 	}
 }
